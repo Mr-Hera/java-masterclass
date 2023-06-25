@@ -2,25 +2,21 @@ public class Hello {
 
     public static void main(String[] args) {
 
-        System.out.println("New score is = " + calculateScore("Tim", 500));
-        System.out.println("New score is = " + calculateScore(10));
+        System.out.println("6ft 2in = " + convertToCentimeters(6, 2) + "cm");
+        System.out.println("68in = " + convertToCentimeters(68) + "cm");
 
     }
 
-    public static int calculateScore(String playerName, int score) {
+    public static double convertToCentimeters(int inches) {
 
-        System.out.println("Player " + playerName + " scored " + score + " points.");
-        return score * 1000;
+        return inches * 2.54;
     }
 
-    public static int calculateScore( int score) {
+    public static double convertToCentimeters(int feet, int inches) {
 
-        return calculateScore("Anonymous", score);
+        int totalInches = (int) ((feet * 12) + inches);
+
+        return convertToCentimeters(totalInches);
     }
 
-    public static int calculateScore() {
-
-        System.out.println("No player name, no player score.");
-        return 0;
-    }
 }
