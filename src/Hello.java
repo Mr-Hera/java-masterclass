@@ -2,21 +2,23 @@ public class Hello {
 
     public static void main(String[] args) {
 
-        System.out.println("6ft 2in = " + convertToCentimeters(6, 2) + "cm");
-        System.out.println("68in = " + convertToCentimeters(68) + "cm");
+        System.out.println(getDurationString(3945));
 
     }
 
-    public static double convertToCentimeters(int inches) {
+    public static String getDurationString(int seconds) {
+//        1 minute = 60 seconds, 1 hour = 60 minutes || 3600 seconds
 
-        return inches * 2.54;
+        int hours = seconds / 3600;
+        int minutes = (seconds % 3600) / 60;
+        int second = (seconds % 3600) % 60;
+
+        return hours + "h " + getDurationString(minutes, second);
     }
 
-    public static double convertToCentimeters(int feet, int inches) {
+    public static String getDurationString(int minutes, int seconds) {
 
-        int totalInches = (int) ((feet * 12) + inches);
-
-        return convertToCentimeters(totalInches);
+        return minutes + "m " + seconds + "s";
     }
 
 }
