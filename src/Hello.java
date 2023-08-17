@@ -1,45 +1,52 @@
 public class Hello {
     public static void main(String[] args) {
-        int value = 3;
-//        switch(value) {
-//            case 1:
-//                System.out.println("Value was 1");
-//                break;
-//            case 2:
-//                System.out.println("Value was 2");
-//                break;
-//            case 3: case 4: case 5:
-//                System.out.println("was 3-4");
-//                break;
-//            default:
-//                System.out.println("Value was neither!");
-//        }
+//        For Loop
+        System.out.println("0 is " + (isPrime(0) ? "" : "NOT ") + "a prime number");
+        System.out.println("1 is " + (isPrime(1) ? "" : "NOT ") + "a prime number");
+        System.out.println("2 is " + (isPrime(2) ? "" : "NOT ") + "a prime number");
+        System.out.println("3 is " + (isPrime(3) ? "" : "NOT ") + "a prime number");
+        System.out.println("8 is " + (isPrime(8) ? "" : "NOT ") + "a prime number");
+        System.out.println("17 is " + (isPrime(170) ? "" : "NOT ") + "a prime number");
 
-//        switch(value) {
-//            case 1 -> System.out.println("Value was 1");
-//            case 2 -> System.out.println("Value was 2");
-//            case 3, 4, 5 -> {
-//                System.out.println("Value was 3, 4 or 5");
-//                System.out.println("Value was -> " + value);
-//            }
-//            default -> System.out.println("Value was none!");
-//        }
-        int charValue = 4;
-        System.out.println(charValue + " = " + getCharacter(charValue));
-
+        System.out.println("primeCounter tracked " + primeCounter() + " prime numbers!");
+        System.out.println("Sum of numbers that met challenge conditions = " + forChallenge());
     }
-    public static String getCharacter(int character) {
-        return switch(character) {
-            case 0 -> "Sunday";
-            case 1 -> "Monday";
-            case 2 -> "Tuesday";
-            case 3 -> "Wednesday";
-            case 4 -> "Thursday";
-            case 5 -> "Friday";
-            case 6 -> "Saturday";
-            default -> {
-                yield " is a Bad Request!";
+
+    public static boolean isPrime(int wholeNumber) {
+        if(wholeNumber <= 2) {
+            return (wholeNumber == 2);
+        }
+        for(int divisor = 2; divisor < wholeNumber/2; divisor++) {
+            if(wholeNumber % divisor == 0) {
+                return false;
             }
-        };
+        }
+        return true;
+    }
+
+    public static int primeCounter() {
+        int counter = 0;
+
+        for(int i = 952; i < 1000; i++) {
+            boolean pass = isPrime(i);
+            if(pass && (counter < 3)) {
+                System.out.println(i);
+                counter += 1;
+            }
+        }
+        return counter;
+    }
+
+    public static int forChallenge() {
+        int totalSum = 0;
+        int counter = 0;
+        for(int num = 1; num <= 1000; num++) {
+            if((num % 3 == 0) && (num % 5 == 0) && (counter < 5)) {
+                counter += 1;
+                totalSum += num;
+                System.out.println(totalSum + " has met all conditions!");
+            }
+        }
+        return totalSum;
     }
 }
