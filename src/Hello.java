@@ -1,23 +1,23 @@
 public class Hello {
     public static void main(String[] args) {
 //        while Loop
-        System.out.println("Sum of digits in 1234 => " + sumDigits(1234));
-        System.out.println("Sum of digits in -125 => " + sumDigits(-125));
-        System.out.println("Sum of digits in 4 => " + sumDigits(4));
-        System.out.println("Sum of digits in 32123 => " + sumDigits(32123));
+        int currentYear = 2023;
+
+        System.out.println(getInputFromConsole(currentYear));
+        System.out.println(getInputFromScanner(currentYear));
     }
 
-    public static int sumDigits(int number) {
-        int total = 0;
-        if(number < 0) {
-            return -1;
-        }
-        while (number > 9) {
-            total += number % 10;
-            number = number / 10;
-        }
+    public static String getInputFromConsole(int currentYear) {
+        String name = System.console().readLine("Hi, what's your name?: ");
+        System.out.println("Hi " + name + ", Thanks for taking the course!");
 
-        total += number;
-        return total;
+        String dob = System.console().readLine("What year were you born? ");
+        int age = currentYear - Integer.parseInt(dob);
+        return "So you're " + age + " years old...";
     }
+
+    public static String getInputFromScanner(int currentYear) {
+        return "";
+    }
+
 }
