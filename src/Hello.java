@@ -3,25 +3,36 @@ import java.util.Scanner;
 public class Hello {
     public static void main(String[] args) {
         int count = 1;
-//        int sum = 0;
-        double sum = 0;
+        int firstRun = 0;
+        int min = 0;
+        int max = 0;
 
         Scanner scanner = new Scanner(System.in);
 
-        while(count <= 5) {
-            System.out.println("Enter number #" + count + ": ");
+        while(count != 0) {
+            System.out.println("Enter any number or a character to exit: ");
             String nextNumber = scanner.nextLine();
+
             try{
-//                int number = Integer.parseInt(nextNumber);
-                double number = Double.parseDouble(nextNumber);
-                count++;
-                sum += number;
+                int number = Integer.parseInt(nextNumber);
+                if(firstRun == 0) {
+                    min = number;
+                    max = number;
+                    firstRun++;
+                }
+                if(number < min) {
+                    min = number;
+                }
+                if(number > max) {
+                    max = number;
+                }
             } catch(NumberFormatException nfe) {
-                System.out.println("Invalid Number!");
+                System.out.println("Exiting...");
+                break;
             }
         }
 
-        System.out.println("Sum of the 5 numbers = " + sum);
+        System.out.println("Min = " + min + " & Max = " + max);
     }
 
 }
